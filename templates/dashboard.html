@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="dashboard-header">
+    <h2>Welcome back, <span>{{ user }}</span></h2>
+    <p style="color: var(--muted); font-size: 14px; margin-top: 6px;">Paste your resume or upload a file to get an AI-powered analysis.</p>
+</div>
+
+<div class="card">
+    <h3>Analyse Resume</h3>
+    <form method="POST" enctype="multipart/form-data">
+        <textarea name="resume" placeholder="Paste your resume here (optional if uploading a file)..."></textarea>
+        <p>Or upload a file (.pdf or .docx)</p>
+        <input type="file" name="file" accept=".pdf,.docx">
+        <input type="text" name="role" placeholder="Target role — e.g. Backend Engineer, Data Scientist" required>
+        <button type="submit">Analyse Resume</button>
+    </form>
+</div>
+
+{% if result %}
+<div class="result">
+
+    {% if result.error %}
+    <div class="result-error">{{ result.error }}</div>
+    {% endif %}
+
+    {% if result.skills %}
+    <div class="result-block skills-block">
+        <div class="result-block-header">
+            <span class="result-block-dot dot-skills"></span>
+            <h3>Matched Skills</h3>
+        </div>
+        <ul>
+            {% for s in result.get("skills", []) %}
+            <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if result.missing_skills %}
+    <div class="result-block missing-block">
+        <div class="result-block-header">
+            <span class="result-block-dot dot-missing"></span>
+            <h3>Missing Skills</h3>
+        </div>
+        <ul>
+            {% for s in result.get("missing_skills", []) %}
+            <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if result.roadmap %}
+    <div class="result-block roadmap-block">
+        <div class="result-block-header">
+            <span class="result-block-dot dot-roadmap"></span>
+            <h3>Learning Roadmap</h3>
+        </div>
+        <ul>
+            {% for s in result.get("roadmap", []) %}
+            <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if result.interview_questions %}
+    <div class="result-block questions-block">
+        <div class="result-block-header">
+            <span class="result-block-dot dot-questions"></span>
+            <h3>Interview Questions</h3>
+        </div>
+        <ul>
+            {% for s in result.get("interview_questions", []) %}
+            <li>{{ s }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+</div>
+{% endif %}
+
+{% endblock %}

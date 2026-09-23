@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-heading">
+    <h2>Analysis History</h2>
+    <p>Your past resume analyses.</p>
+</div>
+
+{% if reports %}
+<div class="history-grid">
+    {% for r in reports %}
+    <div class="history-card">
+        <div class="history-card-preview">
+            <strong>Resume Preview</strong>
+            <p>{{ r["resume"][:200] }}</p>
+        </div>
+        <div class="history-card-results">
+            <div class="history-result-block">
+                <h3>Matched Skills</h3>
+                <ul>
+                    {% for s in r["result"].get("skills", []) %}
+                    <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="history-result-block">
+                <h3>Missing Skills</h3>
+                <ul>
+                    {% for s in r["result"].get("missing_skills", []) %}
+                    <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="history-result-block">
+                <h3>Roadmap</h3>
+                <ul>
+                    {% for s in r["result"].get("roadmap", []) %}
+                    <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="history-result-block">
+                <h3>Interview Questions</h3>
+                <ul>
+                    {% for s in r["result"].get("interview_questions", []) %}
+                    <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+<div class="empty-state">
+    <p style="font-size: 18px; font-weight: 600; color: var(--text);">No analyses yet</p>
+    <p>Head to the <a href="/dashboard">Dashboard</a> to analyse your first resume.</p>
+</div>
+{% endif %}
+
+{% endblock %}

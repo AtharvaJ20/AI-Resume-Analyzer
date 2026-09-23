@@ -1,0 +1,10 @@
+flask = web application, pages, router
+sqlalchemy = databases
+pymsql = for connecting to TiDb
+openai = for integrating Ai 
+PyPDF2 = for reading resume
+python-docx = for reading docs
+
+steps:
+1. setup
+2. database connection
