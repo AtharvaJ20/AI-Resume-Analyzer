@@ -110,6 +110,15 @@ Go to `http://localhost:5002` and you're in.
 
 ---
 
+## Demo
+
+Want to try it without signing up?
+
+**Email:** `demo@airesume.com`
+**Password:** `Demo@123`
+
+---
+
 ## How to use it
 
 1. Sign up with your email and a password
