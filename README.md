@@ -1,4 +1,4 @@
-# AI Resume Analyser
+# AI Resume Analyzer
 
 Ever wondered why you're not getting callbacks? This app takes your resume, looks at your target role, and tells you exactly what's missing — no fluff, no generic advice. It uses Google Gemini under the hood to give you matched skills, real skill gaps, a learning roadmap, and the interview questions you should probably be preparing for.
 

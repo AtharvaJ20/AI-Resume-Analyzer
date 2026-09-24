@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Career Copilot</title>
+    <title>AI Resume Analyzer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <header>
         <div class="container">
-            <span class="brand">Career<span>AI</span></span>
+            <span class="brand">AI Resume<span>Analyzer</span></span>
             {% if session.get("user") %}
             <nav>
                 <a href="/dashboard">Dashboard</a>
@@ -23,7 +23,7 @@
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; 2026 AI Career Copilot</p>
+        <p>&copy; 2026 AI Resume Analyzer</p>
     </footer>
 </body>
 </html>
